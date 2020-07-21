@@ -23,7 +23,7 @@ app.use('/', index);
 app.use('/books', book);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use( (req, res, next) => {
   next(createError(404));
 });
 
@@ -34,8 +34,15 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  if (err.status === 404) {
+		console.log('Global error handler called - 404 Page Not Found');
+		res.render('page-not-found', { err, title: 'Page Not Found' });
+	} else {
+		const err = new Error();
+		err.status = 500;
+		console.log('Global error handler called - 500 Server Error');
+		res.render('error', { err, title: 'Server Error' });
+	}
 });
 
 module.exports = app;

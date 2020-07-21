@@ -17,11 +17,28 @@ module.exports = (sequelize) => {
             validate: {
                 notEmpty: {
                     msg: 'Please provide a value for "author".'
+                },
+                isAlpha: {
+                    msg: 'Please enter letter values for "author".'
                 }
             }
         },
-        genre: Sequelize.STRING,
-        year: Sequelize.INTEGER    
+        genre: {
+            type: Sequelize.STRING,
+            validate:{
+                isAlpha:{
+                    msg: 'Please enter letter values for "genre".'
+                }
+            }
+        },
+        year: {
+            type:Sequelize.INTEGER,
+            validate:{
+                isNumeric:{
+                    msg: 'Please enter a numeric value for "year".'
+                }
+            }
+        }  
     }, { sequelize });
 
     return Book;

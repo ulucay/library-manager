@@ -4,6 +4,12 @@ block content
     h1 New Book
  
     form(action="/books/new", method="post")
+        if(errors)
+                h2.error Oops, an error occured!
+                ul
+                each error in errors
+                    li.error= error.message
+
         p
             label(for='title') Title
             input#title(name='title', type='text')
