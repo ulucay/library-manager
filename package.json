@@ -13,7 +13,7 @@
     "morgan": "^1.9.1",
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
-    "pug": "^3.0.0",
+    "pug": "^3.0.1",
     "sequelize": "^6.3.3",
     "sequelize-cli": "^6.2.0",
     "sqlite3": "^5.0.0"
